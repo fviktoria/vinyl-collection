@@ -4,6 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { PageContextProvider } from "@record-collection/context/page-context";
 import { theme } from "@record-collection/styles/theme";
 
+import type { AppType } from "next/app";
 import type { AppProps } from "next/app";
 
 function App({ Component, pageProps }: AppProps) {
@@ -16,4 +17,6 @@ function App({ Component, pageProps }: AppProps) {
   );
 }
 
-export default appWithTranslation(App);
+const AppWithTranslation: AppType = appWithTranslation(App);
+
+export default AppWithTranslation;
