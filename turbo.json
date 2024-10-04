@@ -13,6 +13,10 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
     }
-  }
+  },
+  "globalEnv": ["NEXT_PUBLIC_OWNER_NAME","NEXT_PUBLIC_OWNER_AVATAR", "NEXT_PUBLIC_OWNER_HANDLE","DISCOGS_TOKEN","DISCOGS_USER_AGENT","DISCOGS_USER_NAME","UPSTASH_URL","UPSTASH_TOKEN"]
 }
