@@ -1,6 +1,6 @@
 # Vinyl Record Collection
 
-**Vinyl Record Collection** is a personal project designed to showcase my private vinyl collection and wishlist. This project leverages modern web technologies to create an organized, interactive display of the records I own and those I hope to add to my collection in the future.
+This is a personal project designed to showcase my private vinyl collection and wishlist. This project leverages modern web technologies to create an organized, interactive display of the records I own and those I hope to add to my collection in the future.
 
 https://records.viky.at/
 
