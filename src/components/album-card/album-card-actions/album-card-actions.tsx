@@ -46,7 +46,7 @@ export const AlbumCardActions: FC<PropsWithChildren<AlbumCardActionsProps>> = ({
       const response = await fetch("/api/wishlist");
       const wishlist = await response.json();
       setWishlist(wishlist);
-    } catch (e) {
+    } catch {
       return null;
     }
   }, [setWishlist]);
@@ -60,7 +60,7 @@ export const AlbumCardActions: FC<PropsWithChildren<AlbumCardActionsProps>> = ({
       });
       await fetchWishlist();
       setIsSubmitting(false);
-    } catch (e) {
+    } catch {
       setError("There was an error reserving the album");
     }
   }, [album.id, email, fetchWishlist]);
@@ -74,7 +74,7 @@ export const AlbumCardActions: FC<PropsWithChildren<AlbumCardActionsProps>> = ({
       });
       await fetchWishlist();
       setIsSubmitting(false);
-    } catch (e) {
+    } catch {
       setError("There was an error undoing the reservation");
     }
   }, [album.id, email, fetchWishlist]);

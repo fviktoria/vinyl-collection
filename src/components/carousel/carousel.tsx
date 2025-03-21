@@ -64,6 +64,7 @@ export const Carousel: FC<PropsWithChildren<ComponentProps<typeof Splide>>> = ({
       </StyledArrowsContainer>
 
       {/* FIXME: */}
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
       {/* @ts-ignore */}
       <Splide ref={ref} {...defaultSettings} {...settings}>
         {Children.map(children, (child, index) => {

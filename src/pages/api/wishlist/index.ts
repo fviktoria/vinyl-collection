@@ -10,7 +10,7 @@ export default async function handler(
     try {
       const wishlist = await getWishlistWithReserved();
       return res.json(wishlist);
-    } catch (e) {
+    } catch {
       return res.status(500).json({ message: "api.error" });
     }
   }

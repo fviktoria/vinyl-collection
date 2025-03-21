@@ -5,12 +5,8 @@ import type { FC } from "react";
 
 type PageContextProps = {
   labelReserved?: boolean;
-  // FIXME:
-  // eslint-disable-next-line no-unused-vars
   setLabelReserved: (value?: boolean) => void;
   wishlist?: DiscogsWantsResponseInterface;
-  // FIXME:
-  // eslint-disable-next-line no-unused-vars
   setWishlist: (value?: DiscogsWantsResponseInterface) => void;
 };
 
