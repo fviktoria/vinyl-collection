@@ -18,13 +18,13 @@ import { DragHandleIcon, HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "next-i18next";
 
-import { useDebounce } from "@record-collection/hooks/use-debounce";
+import { useDebounce } from "@vinyl-collection/hooks/use-debounce";
 
 import { AlbumCard } from "../album-card/album-card";
 import { Carousel } from "../carousel/carousel";
 import { AlbumPreviewCard } from "../album-card/album-preview-card/album-preview-card";
 
-import type { AlbumType } from "@record-collection/types/discogs.types";
+import type { AlbumType } from "@vinyl-collection/types/discogs.types";
 import type { ChangeEventHandler } from "react";
 
 type AlbumOverviewProps<T extends AlbumType[] = AlbumType[]> = {

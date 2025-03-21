@@ -16,7 +16,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 
-import { usePageContext } from "@record-collection/context/page-context";
+import { usePageContext } from "@vinyl-collection/context/page-context";
 
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import type { AlbumGridCard } from "../album-grid-card/album-grid-card";
