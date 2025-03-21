@@ -13,7 +13,6 @@ https://records.viky.at/
 ## Tech Stack
 
 - **Next.js**: React-based framework for building the frontend.
-- **Turborepo**: Used for managing and optimizing the monorepo setup.
 - **Discogs API**: Used to retrieve record details dynamically.
 
 ## Project Status

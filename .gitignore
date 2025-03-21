@@ -1,8 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Dependencies
-node_modules
-.pnp
+node_modules/
+.pnp/
 .pnp.js
 
 # Local env files
@@ -13,20 +13,16 @@ node_modules
 .env.production.local
 
 # Testing
-coverage
-
-# Turbo
-.turbo
+coverage/
 
 # Vercel
-.vercel
+.vercel/
 
 # Build Outputs
 .next/
 out/
-build
-dist
-
+build/
+dist/
 
 # Debug
 npm-debug.log*
@@ -36,3 +32,18 @@ yarn-error.log*
 # Misc
 .DS_Store
 *.pem
+
+# SSH keys (to ensure SSH keys aren't added)
+*.pub
+id_rsa
+id_rsa.pub
+id_dsa
+id_dsa.pub
+id_ecdsa
+id_ecdsa.pub
+id_ed25519
+id_ed25519.pub
+
+# MacOS and other hidden system files
+*.swp
+*.swo
