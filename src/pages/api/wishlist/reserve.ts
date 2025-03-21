@@ -18,7 +18,7 @@ export default async function handler(
     try {
       await setItemAsReserved({ id: body.id.toString(), email: body.email });
       res.status(200).json({ message: "api.reserve.success" });
-    } catch (e) {
+    } catch {
       return res.status(500).json({ message: "api.reserve.error" });
     }
   }
@@ -31,7 +31,7 @@ export default async function handler(
         email: body.email,
       });
       res.status(200).json({ message: "api.reserve.undo-success" });
-    } catch (e) {
+    } catch {
       return res.status(500).json({ message: "api.reserve.undo-error" });
     }
   }
