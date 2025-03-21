@@ -1,55 +1,55 @@
-import { Box } from '@chakra-ui/react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
-import { useEffect } from 'react';
+import { Box } from "@chakra-ui/react";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+import { useEffect } from "react";
 
-import { AlbumOverview } from '@record-collection/components/album-overview/album-overview';
-import { Layout } from '@record-collection/components/layout/layout';
-import { getWishlistWithReserved } from '@record-collection/util/get-wishlist-with-reserved';
-import { usePageContext } from '@record-collection/context/page-context';
+import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
+import { Layout } from "@vinyl-collection/components/layout/layout";
+import { getWishlistWithReserved } from "@vinyl-collection/util/get-wishlist-with-reserved";
+import { usePageContext } from "@vinyl-collection/context/page-context";
 
 import type {
-	AlbumType,
-	DiscogsWantsResponseInterface,
-} from '@record-collection/types/discogs.types';
-import type { InferGetStaticPropsType, GetStaticProps } from 'next';
+  AlbumType,
+  DiscogsWantsResponseInterface,
+} from "@vinyl-collection/types/discogs.types";
+import type { InferGetStaticPropsType, GetStaticProps } from "next";
 
 export default function Wishlist({
-	wishlist: ssrWishlist,
+  wishlist: ssrWishlist,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-	const { t } = useTranslation();
-	const { wishlist, setWishlist } = usePageContext();
+  const { t } = useTranslation();
+  const { wishlist, setWishlist } = usePageContext();
 
-	useEffect(() => {
-		if (ssrWishlist) {
-			setWishlist(ssrWishlist);
-		}
-	}, [ssrWishlist, setWishlist]);
+  useEffect(() => {
+    if (ssrWishlist) {
+      setWishlist(ssrWishlist);
+    }
+  }, [ssrWishlist, setWishlist]);
 
-	if (!wishlist) return null;
+  if (!wishlist) return null;
 
-	return (
-		<Layout showBackButton>
-			<Box as="section" mt={12}>
-				<AlbumOverview
-					heading={t('wishlist.title')}
-					albums={wishlist?.wants as AlbumType[]}
-					showCount
-				/>
-			</Box>
-		</Layout>
-	);
+  return (
+    <Layout showBackButton>
+      <Box as="section" mt={12}>
+        <AlbumOverview
+          heading={t("wishlist.title")}
+          albums={wishlist?.wants as AlbumType[]}
+          showCount
+        />
+      </Box>
+    </Layout>
+  );
 }
 
 export const getStaticProps: GetStaticProps<{
-	wishlist: DiscogsWantsResponseInterface;
-}> = async ({ locale = 'en' }) => {
-	const wishlist = await getWishlistWithReserved();
+  wishlist: DiscogsWantsResponseInterface;
+}> = async ({ locale = "en" }) => {
+  const wishlist = await getWishlistWithReserved();
 
-	return {
-		props: {
-			wishlist,
-			...(await serverSideTranslations(locale, ['common'])),
-		},
-	};
+  return {
+    props: {
+      wishlist,
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
 };

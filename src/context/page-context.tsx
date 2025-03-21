@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-import type { DiscogsWantsResponseInterface } from "@record-collection/types/discogs.types";
+import type { DiscogsWantsResponseInterface } from "@vinyl-collection/types/discogs.types";
 import type { FC } from "react";
 
 type PageContextProps = {

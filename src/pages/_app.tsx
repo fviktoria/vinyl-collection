@@ -1,8 +1,8 @@
 import { appWithTranslation } from "next-i18next";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { PageContextProvider } from "@record-collection/context/page-context";
-import { theme } from "@record-collection/styles/theme";
+import { PageContextProvider } from "@vinyl-collection/context/page-context";
+import { theme } from "@vinyl-collection/styles/theme";
 
 import type { AppType } from "next/app";
 import type { AppProps } from "next/app";
