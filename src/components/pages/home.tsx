@@ -2,7 +2,7 @@
 
 import { Box, Button } from "@chakra-ui/react";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
 import { Layout } from "@vinyl-collection/components/layout/layout";
@@ -20,7 +20,7 @@ type HomePageProps = {
 };
 
 export const HomePage: FC<HomePageProps> = ({ collection, wishlist }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   return (
     <Layout>

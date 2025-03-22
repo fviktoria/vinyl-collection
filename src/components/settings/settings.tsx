@@ -14,18 +14,17 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useCallback } from "react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { SettingsIcon } from "@chakra-ui/icons";
 
 import { usePageContext } from "@vinyl-collection/context/page-context";
 
 import { StyledSettingsWrapper } from "./settings.styles";
-import { LanguageSwitch } from "../language-switch/language-switch";
 
 import type { FC } from "react";
 
 export const Settings: FC = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -65,7 +64,7 @@ export const Settings: FC = () => {
               {t("settings.labelReserved")}
             </FormLabel>
             <Divider mt={6} mb={6} />
-            <LanguageSwitch />
+            {/* <LanguageSwitch /> */}
           </ModalBody>
 
           <ModalFooter>

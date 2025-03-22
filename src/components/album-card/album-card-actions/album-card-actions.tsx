@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 import { usePageContext } from "@vinyl-collection/context/page-context";
 
@@ -31,7 +31,7 @@ export const AlbumCardActions: FC<PropsWithChildren<AlbumCardActionsProps>> = ({
   link,
   isReserved,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const { setWishlist } = usePageContext();
 
   const { isOpen, onClose } = useDisclosure();

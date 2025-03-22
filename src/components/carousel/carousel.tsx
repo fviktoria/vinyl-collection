@@ -3,7 +3,7 @@ import { Children, useCallback, useRef } from "react";
 import { IconButton } from "@chakra-ui/react";
 import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import { type ComponentProps, type FC, type PropsWithChildren } from "react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 import {
   StyledArrowsContainer,
@@ -31,7 +31,7 @@ export const Carousel: FC<PropsWithChildren<ComponentProps<typeof Splide>>> = ({
   children,
   ...settings
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const ref = useRef<Splide>(null);
 
   const handlePrevSlide = useCallback(() => {

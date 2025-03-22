@@ -1,7 +1,7 @@
 "use client";
 
 import { Box } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { FC, useEffect } from "react";
 
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
@@ -20,7 +20,7 @@ type WishlistPageProps = {
 export const WishlistPage: FC<WishlistPageProps> = ({
   wishlist: ssrWishlist,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const { wishlist, setWishlist } = usePageContext();
 
   useEffect(() => {
