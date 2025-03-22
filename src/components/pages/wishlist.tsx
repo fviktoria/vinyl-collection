@@ -1,23 +1,26 @@
+"use client";
+
 import { Box } from "@chakra-ui/react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import { useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { FC, useEffect } from "react";
 
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
 import { Layout } from "@vinyl-collection/components/layout/layout";
-import { getWishlistWithReserved } from "@vinyl-collection/util/get-wishlist-with-reserved";
 import { usePageContext } from "@vinyl-collection/context/page-context";
 
 import type {
   AlbumType,
   DiscogsWantsResponseInterface,
 } from "@vinyl-collection/types/discogs.types";
-import type { InferGetStaticPropsType, GetStaticProps } from "next";
 
-export default function Wishlist({
+type WishlistPageProps = {
+  wishlist: DiscogsWantsResponseInterface;
+};
+
+export const WishlistPage: FC<WishlistPageProps> = ({
   wishlist: ssrWishlist,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation();
+}) => {
+  const t = useTranslations();
   const { wishlist, setWishlist } = usePageContext();
 
   useEffect(() => {
@@ -39,17 +42,4 @@ export default function Wishlist({
       </Box>
     </Layout>
   );
-}
-
-export const getStaticProps: GetStaticProps<{
-  wishlist: DiscogsWantsResponseInterface;
-}> = async ({ locale = "en" }) => {
-  const wishlist = await getWishlistWithReserved();
-
-  return {
-    props: {
-      wishlist,
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
 };

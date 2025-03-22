@@ -1,5 +1,5 @@
 import { Avatar, Box, Container, Flex, Text } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -16,12 +16,12 @@ export const Layout: FC<PropsWithChildren<LayoutProps>> = ({
   showBackButton,
   children,
 }) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   return (
     <>
       <Head>
         <title>
-          {t("page.title", { name: process.env.NEXT_PUBLIC_OWNER_NAME })}
+          {t("page.title", { name: process.env.NEXT_PUBLIC_OWNER_NAME ?? "" })}
         </title>
       </Head>
 
@@ -49,7 +49,9 @@ export const Layout: FC<PropsWithChildren<LayoutProps>> = ({
               fontSize={{ base: "3xl", md: "6xl" }}
               fontWeight="bold"
             >
-              {t("page.title", { name: process.env.NEXT_PUBLIC_OWNER_NAME })}
+              {t("page.title", {
+                name: process.env.NEXT_PUBLIC_OWNER_NAME ?? "",
+              })}
             </Text>
           </Flex>
           {children}

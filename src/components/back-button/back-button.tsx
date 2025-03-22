@@ -1,37 +1,40 @@
-import { ArrowBackIcon } from '@chakra-ui/icons';
-import { Button } from '@chakra-ui/react';
-import { useTranslation } from 'next-i18next';
-import Link from 'next/link';
-import { useEffect, type ComponentProps, type FC, useState } from 'react';
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import { Button } from "@chakra-ui/react";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useEffect, type ComponentProps, type FC, useState } from "react";
 
-import { StyledBackButtonWrapper } from './back-button.styles';
+import { StyledBackButtonWrapper } from "./back-button.styles";
 
-export const BackButton: FC<ComponentProps<typeof Button>> = ({ children, ...props }) => {
-	const { t } = useTranslation();
+export const BackButton: FC<ComponentProps<typeof Button>> = ({
+  children,
+  ...props
+}) => {
+  const t = useTranslations();
 
-	const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > 100) {
-				setIsScrolled(true);
-			} else {
-				setIsScrolled(false);
-			}
-		};
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
 
-		window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-	return (
-		<StyledBackButtonWrapper isScrolled={isScrolled}>
-			<Button as={Link} href="/" leftIcon={<ArrowBackIcon />} {...props}>
-				{children ?? t('labels.backToOverview')}
-			</Button>
-		</StyledBackButtonWrapper>
-	);
+  return (
+    <StyledBackButtonWrapper isScrolled={isScrolled}>
+      <Button as={Link} href="/" leftIcon={<ArrowBackIcon />} {...props}>
+        {children ?? t("labels.backToOverview")}
+      </Button>
+    </StyledBackButtonWrapper>
+  );
 };

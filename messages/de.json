@@ -1,0 +1,54 @@
+{
+  "labels": {
+    "backToOverview": "Zurück",
+    "settings": "Einstellungen",
+    "close": "Schließen",
+    "selectLanguage": "Sprache auswählen",
+    "search": "Suchen",
+    "reserve": "Reservieren",
+    "cancel": "Abbrechen",
+    "email": "E-Mail",
+    "undoReserve": "Reservierung aufheben",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "showAll": "Alle anzeigen"
+  },
+  "albumCard": {
+    "viewOnline": "Zum Shop",
+    "reserve": {
+      "title": "Reservieren",
+      "helperText": "Bitte gib deine E-Mail-Adresse ein, um diese Schallplatte für dich als Geschenk an mich zu reservieren.",
+      "errors": { "email": "Bitte gib eine gültige E-Mail-Adresse ein." }
+    },
+    "undoReserve": {
+      "title": "Reservierung aufheben",
+      "helperText": "Bitte gib die E-Mail-Adresse ein, die du bei der Reservierung angegeben hast."
+    }
+  },
+  "overview": {
+    "records": "{count} Schallplatten"
+  },
+  "page": {
+    "title": "{name}'s Schallplatten",
+    "description": "{name}'s Schallplattensammlung und -wunschliste"
+  },
+  "settings": {
+    "labelReserved": "Bereits reservierte Schallplatten markieren"
+  },
+  "wishlist": {
+    "title": "Meine Wunschliste"
+  },
+  "collection": {
+    "title": "Meine Sammlung"
+  },
+  "privacy": {
+    "title": "Datenschutz",
+    "content": "<p>Diese Website verpflichtet sich, die Privatsphäre und Sicherheit Ihrer persönlichen Informationen zu gewährleisten. Diese Datenschutzrichtlinie beschreibt die Arten von personenbezogenen Daten, die wir erfassen, wie sie verwendet werden und Ihre Möglichkeiten in Bezug auf Ihre Informationen. </p> <h2>Erhebung und Verwendung von Informationen</h2> <ol> <li> <strong>Cookie-Nutzung:</strong> <p> Wir verwenden einen einzigen Cookie, um die von Benutzern ausgewählten Spracheinstellungen zu speichern. Dies trägt dazu bei, Ihr Surferlebnis zu verbessern, indem Inhalte in Ihrer bevorzugten Sprache angezeigt werden. </p> </li> <li> <strong>Reservierung von Artikeln:</strong> <p> Wenn Sie einen Artikel in unserer Vinylplattensammlung oder Wunschliste als 'reserviert' markieren, erfassen und speichern wir Ihre E-Mail-Adresse. Diese Informationen werden sicher mithilfe eines Tools namens 'Upstash' gespeichert und in der Region 'eu-central-1' gespeichert. Ihre E-Mail-Adresse wird ausschließlich zum Zweck der Erleichterung des Reservierungsprozesses verwendet und nicht an Dritte weitergegeben. </p> </li> </ol> <h2>Datensicherheit</h2> <p> Wir ergreifen geeignete Maßnahmen, um die Sicherheit und Vertraulichkeit Ihrer Informationen zu gewährleisten. Unser Einsatz von Upstash und die Speicherung in der angegebenen Region erfolgen in Übereinstimmung mit den Datenschutzgesetzen zum Schutz Ihrer Daten vor unbefugtem Zugriff, Offenlegung oder Missbrauch. </p> <h2>Ihre Rechte</h2> <p> Sie haben das Recht, den Zugriff, die Berichtigung oder Löschung Ihrer personenbezogenen Daten, die bei uns gespeichert sind, anzufordern. Bitte kontaktieren Sie uns unter <a href='mailto:youremail@example.com'>youremail@example.com</a> für Anfragen oder Anträge bezüglich Ihrer persönlichen Informationen. </p> <h2>Aktualisierungen der Datenschutzrichtlinie</h2> <p> Diese Datenschutzrichtlinie kann regelmäßig aktualisiert werden, um Änderungen in unseren Praktiken widerzuspiegeln. Wir empfehlen Ihnen, diese Seite auf die neuesten Informationen zu unseren Datenschutzpraktiken zu überprüfen. </p> <h2>Zustimmung</h2> <p> Durch die Nutzung unserer Website stimmen Sie der Erhebung und Verwendung Ihrer Informationen gemäß dieser Datenschutzrichtlinie zu. </p> <p> Sollten Sie Fragen oder Bedenken zu dieser Datenschutzrichtlinie oder unseren Datenschutzpraktiken haben, kontaktieren Sie uns bitte unter <a href='{email}'>{email}</a>. </p> <p><em>Zuletzt aktualisiert: {date}</em></p>"
+  },
+  "api": {
+    "reserve": {
+      "success": "Erfolgreich reserviert!",
+      "error": "Es ist ein Fehler aufgetreten. Bitte versuche es erneut."
+    }
+  }
+}

@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { DragHandleIcon, HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import { useCallback, useMemo, useState } from "react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 import { useDebounce } from "@vinyl-collection/hooks/use-debounce";
 
@@ -46,7 +46,7 @@ export const AlbumOverview = <T extends AlbumType[]>({
   isTeaser = false,
   overviewLink,
 }: AlbumOverviewProps<T>) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
 
   const [variant, setVariant] = useState<"grid" | "list">(defaultVariant);
   const [search, setSearch] = useState<string>("");

@@ -1,10 +1,9 @@
-import { Box, Button } from "@chakra-ui/react";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import Link from "next/link";
-import { useTranslation } from "next-i18next";
+"use client";
 
-import { getCollection } from "@vinyl-collection/util/get-collection";
-import { getWishlist } from "@vinyl-collection/util/get-wishlist";
+import { Box, Button } from "@chakra-ui/react";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
 import { Layout } from "@vinyl-collection/components/layout/layout";
 
@@ -13,13 +12,15 @@ import type {
   DiscogsReleasesResponseInterface,
   DiscogsWantsResponseInterface,
 } from "@vinyl-collection/types/discogs.types";
-import type { InferGetStaticPropsType, GetStaticProps } from "next";
+import { FC } from "react";
 
-export default function Home({
-  collection,
-  wishlist,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { t } = useTranslation();
+type HomePageProps = {
+  collection: DiscogsReleasesResponseInterface;
+  wishlist: DiscogsWantsResponseInterface;
+};
+
+export const HomePage: FC<HomePageProps> = ({ collection, wishlist }) => {
+  const t = useTranslations();
 
   return (
     <Layout>
@@ -50,20 +51,4 @@ export default function Home({
       </Box>
     </Layout>
   );
-}
-
-export const getStaticProps: GetStaticProps<{
-  collection: DiscogsReleasesResponseInterface;
-  wishlist: DiscogsWantsResponseInterface;
-}> = async ({ locale = "en" }) => {
-  const collection = await getCollection({ per_page: 6 });
-  const wishlist = await getWishlist({ per_page: 6 });
-
-  return {
-    props: {
-      collection,
-      wishlist,
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
 };
