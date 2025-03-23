@@ -7,16 +7,12 @@ import { useTranslations } from "next-intl";
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
 import { Layout } from "@vinyl-collection/components/layout/layout";
 
-import type {
-  AlbumType,
-  DiscogsReleasesResponseInterface,
-  DiscogsWantsResponseInterface,
-} from "@vinyl-collection/types/discogs.types";
 import { FC } from "react";
+import { CfAlbumType } from "@vinyl-collection/types/album.types";
 
 type HomePageProps = {
-  collection: DiscogsReleasesResponseInterface;
-  wishlist: DiscogsWantsResponseInterface;
+  collection: CfAlbumType[];
+  wishlist: CfAlbumType[];
 };
 
 export const HomePage: FC<HomePageProps> = ({ collection, wishlist }) => {
@@ -27,7 +23,7 @@ export const HomePage: FC<HomePageProps> = ({ collection, wishlist }) => {
       <Box as="section">
         <AlbumOverview
           heading={t("collection.title")}
-          albums={collection?.releases as AlbumType[]}
+          albums={collection}
           showFooter={false}
           isTeaser
           overviewLink="/collection"
@@ -40,7 +36,7 @@ export const HomePage: FC<HomePageProps> = ({ collection, wishlist }) => {
       <Box as="section" mt={12}>
         <AlbumOverview
           heading={t("wishlist.title")}
-          albums={wishlist?.wants as AlbumType[]}
+          albums={wishlist}
           showFooter={false}
           isTeaser
           overviewLink="/wishlist"

@@ -6,14 +6,11 @@ import { useTranslations } from "next-intl";
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
 import { Layout } from "@vinyl-collection/components/layout/layout";
 
-import type {
-  AlbumType,
-  DiscogsReleasesResponseInterface,
-} from "@vinyl-collection/types/discogs.types";
 import { FC } from "react";
+import { CfAlbumType } from "@vinyl-collection/types/album.types";
 
 type CollectionPageProps = {
-  collection: DiscogsReleasesResponseInterface;
+  collection: CfAlbumType[];
 };
 
 export const CollectionPage: FC<CollectionPageProps> = ({ collection }) => {
@@ -24,7 +21,7 @@ export const CollectionPage: FC<CollectionPageProps> = ({ collection }) => {
       <Box as="section">
         <AlbumOverview
           heading={t("collection.title")}
-          albums={collection?.releases as AlbumType[]}
+          albums={collection}
           showFooter={false}
           showCount
         />
