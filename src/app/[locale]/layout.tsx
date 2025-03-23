@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
-import { getLocale, getTranslations } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { routing } from "@vinyl-collection/i18n/routing";
 
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getLocale();
+  // Ensure that the incoming `locale` is valid
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   return (
     <html lang={locale}>

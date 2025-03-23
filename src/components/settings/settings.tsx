@@ -22,6 +22,7 @@ import { usePageContext } from "@vinyl-collection/context/page-context";
 import { StyledSettingsWrapper } from "./settings.styles";
 
 import type { FC } from "react";
+import { LanguageSwitch } from "../language-switch/language-switch";
 
 export const Settings: FC = () => {
   const t = useTranslations();
@@ -64,7 +65,7 @@ export const Settings: FC = () => {
               {t("settings.labelReserved")}
             </FormLabel>
             <Divider mt={6} mb={6} />
-            {/* <LanguageSwitch /> */}
+            <LanguageSwitch />
           </ModalBody>
 
           <ModalFooter>
