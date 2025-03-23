@@ -1,11 +1,10 @@
-import { getCollection } from "@vinyl-collection/util/get-collection";
-import { getWishlist } from "@vinyl-collection/util/get-wishlist";
-
 import { HomePage } from "@vinyl-collection/components/pages/home";
+import { getCollection } from "@vinyl-collection/util/contentful/get-collection";
+import { getWishlist } from "@vinyl-collection/util/contentful/get-wishlist";
 
 export default async function Home() {
-  const collection = await getCollection({ per_page: 6 });
-  const wishlist = await getWishlist({ per_page: 6 });
+  const collection = await getCollection();
+  const wishlist = await getWishlist();
 
   return <HomePage collection={collection} wishlist={wishlist} />;
 }

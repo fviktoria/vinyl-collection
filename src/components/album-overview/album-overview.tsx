@@ -24,10 +24,10 @@ import { AlbumCard } from "../album-card/album-card";
 import { Carousel } from "../carousel/carousel";
 import { AlbumPreviewCard } from "../album-card/album-preview-card/album-preview-card";
 
-import type { AlbumType } from "@vinyl-collection/types/discogs.types";
 import type { ChangeEventHandler } from "react";
+import { CfAlbumType } from "@vinyl-collection/types/album.types";
 
-type AlbumOverviewProps<T extends AlbumType[] = AlbumType[]> = {
+type AlbumOverviewProps<T extends CfAlbumType[] = CfAlbumType[]> = {
   albums: T;
   heading: string;
   showCount?: boolean;
@@ -37,7 +37,7 @@ type AlbumOverviewProps<T extends AlbumType[] = AlbumType[]> = {
   overviewLink?: string;
 };
 
-export const AlbumOverview = <T extends AlbumType[]>({
+export const AlbumOverview = <T extends CfAlbumType[]>({
   heading,
   albums,
   showCount = false,
@@ -62,13 +62,13 @@ export const AlbumOverview = <T extends AlbumType[]>({
   const filteredAlbums = useMemo(
     () =>
       debouncedValue.length > 0
-        ? albums.filter((album) => {
-            const title = album.basic_information.title.toLowerCase();
-            const artist = album.basic_information.artists
+        ? albums.filter(({ fields: { discogsRelease: album } }) => {
+            const title = album?.title?.toLowerCase();
+            const artist = album?.artists
               .map((artist) => artist.name.toLowerCase())
               .join(" ");
             const searchTerm = debouncedValue.toLowerCase();
-            return title.includes(searchTerm) || artist.includes(searchTerm);
+            return title?.includes(searchTerm) || artist?.includes(searchTerm);
           })
         : albums,
     [albums, debouncedValue]
@@ -156,7 +156,7 @@ export const AlbumOverview = <T extends AlbumType[]>({
           mb={6}
         >
           {filteredAlbums.map((album) => (
-            <GridItem key={album.id}>
+            <GridItem key={album?.sys.id}>
               <AlbumCard
                 album={album}
                 showFooter={showFooter}
@@ -170,7 +170,7 @@ export const AlbumOverview = <T extends AlbumType[]>({
           <Carousel>
             {filteredAlbums.map((album) => (
               <AlbumCard
-                key={album.id}
+                key={album.sys.id}
                 album={album}
                 showFooter={showFooter}
                 variant={variant}

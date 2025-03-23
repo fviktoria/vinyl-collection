@@ -1,19 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { usePageContext } from "@vinyl-collection/context/page-context";
-import { isDiscogsWantsInterface } from "@vinyl-collection/types/guards/discogs.guards";
 import { isLink } from "@vinyl-collection/util/is-link";
-import { isAlbumTypeWithReserved } from "@vinyl-collection/types/guards/wishlist.guards";
 
 import { AlbumGridCard } from "./album-grid-card/album-grid-card";
 import { AlbumListCard } from "./album-list-card/album-list-card";
 
-import type { AlbumType } from "@vinyl-collection/types/discogs.types";
 import type { ComponentProps, FC } from "react";
 import type { AlbumOverview } from "../album-overview/album-overview";
+import { CfAlbumType } from "@vinyl-collection/types/album.types";
 
 type AlbumCardProps = {
-  album: AlbumType;
+  album: CfAlbumType;
   showFooter?: boolean;
 } & Pick<ComponentProps<typeof AlbumOverview>, "variant">;
 
@@ -22,25 +20,25 @@ export const AlbumCard: FC<AlbumCardProps> = ({
   showFooter = true,
   variant = "grid",
 }) => {
+  const { discogsRelease } = album.fields;
   const artistNames = useMemo(
-    () =>
-      album.basic_information.artists.map((artist) => artist.name).join(", "),
-    [album.basic_information.artists]
+    () => discogsRelease?.artists.map((artist) => artist.name).join(", "),
+    [discogsRelease?.artists]
   );
 
   const { labelReserved } = usePageContext();
 
   const link = useMemo(() => {
-    if (isDiscogsWantsInterface(album)) {
-      return isLink(album.notes) ? album.notes : undefined;
+    if (album.fields.shopUrl) {
+      return isLink(album.fields.shopUrl) ? album.fields.shopUrl : undefined;
     }
   }, [album]);
 
   const [isReserved, setIsReserved] = useState<boolean>();
 
   useEffect(() => {
-    if (isAlbumTypeWithReserved(album) && labelReserved) {
-      setIsReserved(album.reserved);
+    if (labelReserved) {
+      setIsReserved(album.fields.reserved);
     } else {
       setIsReserved(false);
     }
@@ -49,7 +47,7 @@ export const AlbumCard: FC<AlbumCardProps> = ({
   return variant === "grid" ? (
     <AlbumGridCard
       album={album}
-      artistNames={artistNames}
+      artistNames={artistNames ?? ""}
       isReserved={isReserved}
       link={link}
       showFooter={showFooter}
