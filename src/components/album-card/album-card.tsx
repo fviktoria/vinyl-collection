@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 
 import { usePageContext } from "@vinyl-collection/context/page-context";
 import { isLink } from "@vinyl-collection/util/is-link";
-import { isAlbumTypeWithReserved } from "@vinyl-collection/types/guards/wishlist.guards";
 
 import { AlbumGridCard } from "./album-grid-card/album-grid-card";
 import { AlbumListCard } from "./album-list-card/album-list-card";
@@ -38,7 +37,7 @@ export const AlbumCard: FC<AlbumCardProps> = ({
   const [isReserved, setIsReserved] = useState<boolean>();
 
   useEffect(() => {
-    if (isAlbumTypeWithReserved(album) && labelReserved) {
+    if (labelReserved) {
       setIsReserved(album.fields.reserved);
     } else {
       setIsReserved(false);

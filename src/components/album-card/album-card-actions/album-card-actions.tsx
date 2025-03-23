@@ -56,28 +56,28 @@ export const AlbumCardActions: FC<PropsWithChildren<AlbumCardActionsProps>> = ({
     try {
       await fetch("/api/wishlist/reserve", {
         method: "POST",
-        body: JSON.stringify({ id: album.id, email }),
+        body: JSON.stringify({ id: album.sys.id, email }),
       });
       await fetchWishlist();
       setIsSubmitting(false);
     } catch {
       setError("There was an error reserving the album");
     }
-  }, [album.id, email, fetchWishlist]);
+  }, [album.sys.id, email, fetchWishlist]);
 
   const undoReserve = useCallback(async () => {
     setIsSubmitting(true);
     try {
       await fetch("/api/wishlist/reserve", {
         method: "DELETE",
-        body: JSON.stringify({ id: album.id, email }),
+        body: JSON.stringify({ id: album.sys.id, email }),
       });
       await fetchWishlist();
       setIsSubmitting(false);
     } catch {
       setError("There was an error undoing the reservation");
     }
-  }, [album.id, email, fetchWishlist]);
+  }, [album.sys.id, email, fetchWishlist]);
 
   const handleReserve = useCallback(() => {
     if (!email || email.length === 0) {
