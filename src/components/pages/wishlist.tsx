@@ -7,14 +7,10 @@ import { FC, useEffect } from "react";
 import { AlbumOverview } from "@vinyl-collection/components/album-overview/album-overview";
 import { Layout } from "@vinyl-collection/components/layout/layout";
 import { usePageContext } from "@vinyl-collection/context/page-context";
-
-import type {
-  AlbumType,
-  DiscogsWantsResponseInterface,
-} from "@vinyl-collection/types/discogs.types";
+import { CfAlbumType } from "@vinyl-collection/types/album.types";
 
 type WishlistPageProps = {
-  wishlist: DiscogsWantsResponseInterface;
+  wishlist: CfAlbumType[];
 };
 
 export const WishlistPage: FC<WishlistPageProps> = ({
@@ -36,7 +32,7 @@ export const WishlistPage: FC<WishlistPageProps> = ({
       <Box as="section" mt={12}>
         <AlbumOverview
           heading={t("wishlist.title")}
-          albums={wishlist?.wants as AlbumType[]}
+          albums={wishlist}
           showCount
         />
       </Box>

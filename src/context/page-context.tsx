@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-import type { DiscogsWantsResponseInterface } from "@vinyl-collection/types/discogs.types";
 import type { FC } from "react";
+import { CfAlbumType } from "@vinyl-collection/types/album.types";
 
 type PageContextProps = {
   labelReserved?: boolean;
   setLabelReserved: (value?: boolean) => void;
-  wishlist?: DiscogsWantsResponseInterface;
-  setWishlist: (value?: DiscogsWantsResponseInterface) => void;
+  wishlist?: CfAlbumType[];
+  setWishlist: (value?: CfAlbumType[]) => void;
 };
 
 export const PageContext = createContext<PageContextProps | null>(null);
@@ -16,7 +16,7 @@ export const PageContextProvider: FC<
   React.PropsWithChildren<Partial<PageContextProps>>
 > = ({ children }) => {
   const [labelReserved, setLabelReserved] = useState<boolean>();
-  const [wishlist, setWishlist] = useState<DiscogsWantsResponseInterface>();
+  const [wishlist, setWishlist] = useState<CfAlbumType[]>();
 
   const ownerHandle = process.env.NEXT_PUBLIC_OWNER_HANDLE;
 

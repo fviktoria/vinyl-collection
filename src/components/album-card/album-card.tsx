@@ -39,7 +39,7 @@ export const AlbumCard: FC<AlbumCardProps> = ({
 
   useEffect(() => {
     if (isAlbumTypeWithReserved(album) && labelReserved) {
-      setIsReserved(album.reserved);
+      setIsReserved(album.fields.reserved);
     } else {
       setIsReserved(false);
     }
