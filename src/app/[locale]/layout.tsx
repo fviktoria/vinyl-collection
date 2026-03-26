@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ColorModeScript } from "@chakra-ui/react";
 import { Providers } from "./providers";
 import { getTranslations } from "next-intl/server";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
@@ -20,6 +21,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <ColorModeScript initialColorMode="light" />
+      </head>
       <body>
         <NextIntlClientProvider>
           <Providers>{children}</Providers>
