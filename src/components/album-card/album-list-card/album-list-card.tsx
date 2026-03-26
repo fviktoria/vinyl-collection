@@ -11,21 +11,16 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import { AlbumCardActions } from "../album-card-actions/album-card-actions";
-
 import type { AlbumGridCard } from "../album-grid-card/album-grid-card";
 import type { ComponentProps, FC } from "react";
 
 export const AlbumListCard: FC<ComponentProps<typeof AlbumGridCard>> = ({
   album,
-  isReserved,
   artistNames,
-  showFooter,
-  link,
 }) => {
   const { discogsRelease: albumDetails } = album.fields;
   return (
-    <Card opacity={isReserved ? 0.4 : 1}>
+    <Card>
       <CardBody>
         <Flex
           gap={{ base: 0, md: 3 }}
@@ -60,20 +55,6 @@ export const AlbumListCard: FC<ComponentProps<typeof AlbumGridCard>> = ({
               )}
             </Stack>
           </Grid>
-          <Box
-            width={{
-              base: "100%",
-              md: "auto",
-            }}
-          >
-            {showFooter && (
-              <AlbumCardActions
-                album={album}
-                link={link}
-                isReserved={isReserved}
-              />
-            )}
-          </Box>
         </Flex>
       </CardBody>
     </Card>
