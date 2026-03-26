@@ -41,7 +41,6 @@ export const AlbumOverview = <T extends CfAlbumType[]>({
   heading,
   albums,
   showCount = false,
-  showFooter,
   variant: defaultVariant = "grid",
   isTeaser = false,
   overviewLink,
@@ -56,7 +55,7 @@ export const AlbumOverview = <T extends CfAlbumType[]>({
     (event) => {
       setSearch(event.target.value);
     },
-    []
+    [],
   );
 
   const filteredAlbums = useMemo(
@@ -71,7 +70,7 @@ export const AlbumOverview = <T extends CfAlbumType[]>({
             return title?.includes(searchTerm) || artist?.includes(searchTerm);
           })
         : albums,
-    [albums, debouncedValue]
+    [albums, debouncedValue],
   );
 
   const isMobile = useBreakpointValue({
@@ -157,11 +156,7 @@ export const AlbumOverview = <T extends CfAlbumType[]>({
         >
           {filteredAlbums.map((album) => (
             <GridItem key={album?.sys.id}>
-              <AlbumCard
-                album={album}
-                showFooter={showFooter}
-                variant={variant}
-              />
+              <AlbumCard album={album} variant={variant} />
             </GridItem>
           ))}
         </Grid>
@@ -169,17 +164,11 @@ export const AlbumOverview = <T extends CfAlbumType[]>({
         <Box marginBottom={6}>
           <Carousel>
             {filteredAlbums.map((album) => (
-              <AlbumCard
-                key={album.sys.id}
-                album={album}
-                showFooter={showFooter}
-                variant={variant}
-              />
+              <AlbumCard key={album.sys.id} album={album} variant={variant} />
             ))}
             {overviewLink && albums[0] && (
               <AlbumPreviewCard
                 album={albums[0]}
-                showFooter={showFooter}
                 variant={variant}
                 href={overviewLink}
               />

@@ -1,7 +1,5 @@
 import {
   Button,
-  Divider,
-  FormLabel,
   IconButton,
   Modal,
   ModalBody,
@@ -10,14 +8,10 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Switch,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { SettingsIcon } from "@chakra-ui/icons";
-
-import { usePageContext } from "@vinyl-collection/context/page-context";
 
 import { StyledSettingsWrapper } from "./settings.styles";
 
@@ -28,13 +22,6 @@ export const Settings: FC = () => {
   const t = useTranslations();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const { labelReserved, setLabelReserved } = usePageContext();
-
-  const handleSwitch = useCallback(
-    () => setLabelReserved(!labelReserved),
-    [labelReserved, setLabelReserved]
-  );
 
   return (
     <>
@@ -49,22 +36,6 @@ export const Settings: FC = () => {
           <ModalHeader>{t("labels.settings")}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <FormLabel
-              htmlFor="label-reserved"
-              display="flex"
-              gap={3}
-              alignItems="center"
-              m={0}
-            >
-              <Switch
-                id="label-reserved"
-                onChange={handleSwitch}
-                isChecked={labelReserved}
-                data-checked={labelReserved}
-              />
-              {t("settings.labelReserved")}
-            </FormLabel>
-            <Divider mt={6} mb={6} />
             <LanguageSwitch />
           </ModalBody>
 

@@ -3,37 +3,27 @@ import {
   Box,
   Card,
   CardBody,
-  CardFooter,
   Heading,
   Image,
   Stack,
   Text,
 } from "@chakra-ui/react";
 
-import { AlbumCardActions } from "../album-card-actions/album-card-actions";
-
 import type { ComponentProps, FC } from "react";
 import type { AlbumCard } from "../album-card";
 
-type AlbumGridCardProps = Pick<
-  ComponentProps<typeof AlbumCard>,
-  "album" | "showFooter"
-> & {
-  isReserved?: boolean;
+type AlbumGridCardProps = Pick<ComponentProps<typeof AlbumCard>, "album"> & {
   artistNames?: string;
   link?: string;
 };
 
 export const AlbumGridCard: FC<AlbumGridCardProps> = ({
   album,
-  isReserved,
   artistNames,
-  showFooter,
-  link,
 }) => {
   const { discogsRelease: albumDetails } = album.fields;
   return (
-    <Card opacity={isReserved ? 0.4 : 1} overflow="hidden">
+    <Card overflow="hidden">
       <Image
         src={albumDetails?.images[0]?.uri}
         aspectRatio={1}
@@ -58,11 +48,6 @@ export const AlbumGridCard: FC<AlbumGridCardProps> = ({
           )}
         </Stack>
       </CardBody>
-      {showFooter && (
-        <CardFooter>
-          <AlbumCardActions album={album} link={link} isReserved={isReserved} />
-        </CardFooter>
-      )}
     </Card>
   );
 };
